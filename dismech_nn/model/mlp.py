@@ -19,7 +19,7 @@ class MLP(torch.nn.Module):
 
         self.net = torch.nn.Sequential(
             torch.nn.Linear(in_dim, hidden, dtype=dtype),
-            torch.nn.ReLU(),
+            torch.nn.Softplus(),
             torch.nn.Linear(hidden, out_dim, dtype=dtype)
         )
 
@@ -46,7 +46,7 @@ class PhysicsMLP(torch.nn.Module):
 
         self.net = torch.nn.Sequential(
             torch.nn.Linear(in_out, hidden, dtype=dtype),
-            torch.nn.ReLU(),
+            torch.nn.Softplus(),
             torch.nn.Linear(hidden, self.out, dtype=dtype)
         )
 

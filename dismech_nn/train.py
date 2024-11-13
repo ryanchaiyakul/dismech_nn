@@ -9,8 +9,8 @@ def train_ode(nn: torch.nn.Module,
               valid_dataloader: DataLoader,
               epochs: int,
               device='cpu',
-              method='dopri5',
-              options={},
+              method=None,
+              options=None,
               running_mean=0.9):
     """
     Basic ODE training loop with 2D visualization. Turn off visualization if your NN is not 2D and time agnostic.
@@ -42,4 +42,4 @@ def train_ode(nn: torch.nn.Module,
                 output = loss(pred_y.to(device), batch_y.to(device))
                 valid_loss += output
         print("Epoch {}/{} - Training Loss: {} Validation Loss: {}".format(epoch+1,
-              epochs, train_loss/len(train_dataloader), valid_loss/len(valid_dataloader)))
+              epochs, train_loss, valid_loss/len(valid_dataloader)))
